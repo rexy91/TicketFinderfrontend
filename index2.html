@@ -1,0 +1,193 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../front end/index2.css">
+    <script defer src="index2.js"></script>
+    <!-- library for stars -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body id = 'main-body'>
+    <div class="row header-row bg-primary">
+      <div class="col my-col">
+         <nav class="navbar navbar-expand-sm navbar-dark text-white my-header" id='nav-bar'> 
+            TicketFinder
+        </nav>
+        <button type = 'button' id ='signout-button' style="display: none;"> Sign Out</button>
+        
+      </div>
+
+        <!-- <div class="container">     -->
+              <div class="col-6 my-col">
+                  <button id='sport-btn' type="button" class="btn btn-primary bg-white sports-btn" style='color:black; font-weight: bold;'>Sports</button>
+                  <button id='music-btn' type="button" class="btn btn-primary bg-white sports-btn" style='color:black; font-weight: bold;'>Music</button>
+                  <button id='art-btn' type="button" class="btn btn-primary bg-white sports-btn" style='color:black; font-weight: bold;'>Arts</button>
+                  <button id='welcome-button' class = 'clicked closed'> Welcome!!</button>
+                  <button type = 'button' id ='signin-button'> Signin/Signup</button>
+              </div>
+            </div>
+
+          </div>
+        
+          <!-- planner header -->
+          <div id='planner-header' style='display:none;'>
+              
+          </div>
+
+          <!-- planner showdiv -->
+
+          <div id= 'planner-page-div' class = 'row'>
+
+          </div>
+
+        <!-- showpage div -->
+
+        <div id ='show-page-div' class='row'>
+          
+        </div>
+
+        <!-- Sign Up / Sign In Form-->
+        <div class="container login-container" id='login-form' style='display:none'>
+          <div class="row">
+              <div class="col-md-6 login-form-1">
+                  <h3 id = 'form-title'>Please Login</h3>
+                  <form id='signin-signup-submit' >
+                      <div class="form-group">
+                          <input type="text" id='username_value' class="form-control" placeholder="Username *" value="" />
+                      </div>
+
+                      <div class="form-group">
+                          <input  type = 'password' id='password_value' class="form-control" placeholder="Your Password *" value="" />
+                      </div>
+
+                      <div class="form-group">
+                          <input type="submit" class="btnSubmit" id='signin' value="Login" />
+                          <input type="submit" value='Signup'>
+
+                      </div>
+                  </form>
+
+
+
+                  <form id='update-form' style='display:none'>
+                    <div class="form-group">
+                        <input type="text" id='new_user_name' class="form-control" placeholder="Enter New Username*" value="" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" class="btnSubmit" id='update' value="Update Username" />
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="ForgetPwd" id ='forgot-password'>Forget Password?</a>
+                    </div>
+                </form>
+              </div>
+              </div>
+          </div>
+      </div>
+          <!-- search bar row -->
+          <div class = 'main-div'> 
+          <div class="row">
+              <div class="col search-bar-col">
+                 <p id ='shining-text'>Welcome to our website.</p>
+                 
+              </div>
+          </div>
+
+          <!-- event photos and comment button section  -->
+
+          <div class="row">
+              <div class="col-4 event-photo-col">
+                 <div id='lebron-photo'>
+                <img src="https://avante.biz/wp-content/uploads/Patriots-Wallpaper/Patriots-Wallpaper-001.jpg" class="img-fluid" alt="Responsive image">
+                 </div>
+                <br>
+
+              <div id ='harden-photo'>
+                <img src="https://www.bostonherald.com/wp-content/uploads/2019/10/CelticsMS014.jpg?w=460" class="img-fluid" alt="Responsive image">
+              </div>
+
+            <div id='superbowl-img'>
+            
+                <img src="https://cdn.nba.net/nba-drupal-prod/2018-08/leaguev3.jpeg" class="img-fluid" alt="Responsive image" height='60px'>
+            </div>
+              </div>
+
+              <div class="col-5">
+                <div id='broadway-upcoming-img'>     
+                <img src="https://bsp-static.playbill.com/dims4/default/21e5e92/2147483647/crop/2020x1137%2B0%2B0/resize/970x546/quality/90/?url=http%3A%2F%2Fpb-asset-replication.s3.amazonaws.com%2F14%2Fd6%2Fcbafa3d1426db7d09abd267e192f%2Fupcoming-broadway.jpg" class="img-fluid" alt="Responsive image">
+                </div> 
+                <br>
+              <div id='nyc-photo'>
+                  <img src="https://cdn.getyourguide.com/img/tour_img-1096032-146.jpg" class="img-fluid" alt="Responsive image">
+                </div>
+              </div>
+              <div class="col-3 comment-button-col">
+                <div class = 'container'>
+                    <button id='review-button' class = 'clicked closed'> Leave Review </button>
+                       <form id ='review-form' class="w3-container" style="display:none;">
+                         <label class="w3-text-blue"><b>Review</b></label>
+                         <br>
+                         <label for="">Rating</label>
+                         <select name = 'rating_dropdown' class ='rating-dropdown'>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                         <textarea class="w3-input w3-border" id='user_review' type="text" rows="7" placeholder="sign in required to leave review"></textarea>
+                         <button class="w3-btn w3-blue">Submit</button>
+                         <!-- <input type="submit"/> -->
+                                    <!-- onclick, calling the function inside the html tag -->
+                         <button type = 'button' class="w3-btn w3-blue" id='close_form_btn' >Close</button>
+                       </form>  
+                <div >
+                      <button type = 'button' class="w3-btn w3-blue" id = 'personal-planner'style='display:none;' >Personal Planner</button>
+                      <button type = 'button' id ='update-button' style="display: none"> Update Info</button>
+                      
+                </div>
+                    </div>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col reviews-section">
+                       <div class="reviews_append_div">
+                          
+                       </div>
+              </div>
+
+              <div class="col-sm-3 review-photo">
+                  <img src="http://authorceo.com/wp-content/uploads/2013/09/Depositphotos_27032441_s.jpg" alt="" width="100%" heigt = 'auto'>
+                  <br>
+              </div>
+              <div class="col-3 chat-box-possible">
+                    <iframe src="https://open.spotify.com/embed/playlist/0dZ163WV7VaNfB4ylsJ8Vi" width="300" height="290" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+              </div>
+          </div>
+          <div class="row footer-class ">
+              <div class="col">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet, vitae? Non illo minus dolorum quae voluptatem? Vel laudantium dolor asperiores!
+                  <br>
+                  <a href="#" class="fa fa-facebook icons"></a>
+                  <a href="#" class="fa fa-twitter icons"></a>
+                  <a href="www.google.com" class="fa fa-google icons"></a>
+                  <a href="#" class="fa fa-instagram icons"></a>
+                  <a href="#" class="fa fa-snapchat-ghost icons"></a>
+                    
+              </div>
+          </div>
+      </div><!--  wraps body part  -->
+
+    </div> <!-- nono-block -->
+    
+    </body> 
+</body>
+</div>
+</html>
