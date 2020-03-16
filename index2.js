@@ -271,59 +271,59 @@ checkStars(review.rating)
 
 }
 
-// // Sports page:
-// sport_btn.addEventListener('click', e=> {
-//     planner_page_div.innerHTML =''
-//     main_div.style.display = 'none'
-//     // let show_page_div = document.querySelector('#show-page-div')
-//         show_page_div.innerHTML =''
-//         //    Brooklyn Sports fetch
-//         fetch("https://app.ticketmaster.com/discovery/v2/events.json?keyword=sports&city=brooklyn&apikey=GakWWYs0kV9kTWdT89oUptSkOAUQwMz5")
-//         .then(r => r.json()).then(object => {
-//             let row_div= document.createElement('div')
+// Sports page when not logged in:
+sport_btn.addEventListener('click', e=> {
+    planner_page_div.innerHTML =''
+    main_div.style.display = 'none'
+    // let show_page_div = document.querySelector('#show-page-div')
+        show_page_div.innerHTML =''
+        //    Brooklyn Sports fetch
+        fetch("https://app.ticketmaster.com/discovery/v2/events.json?keyword=sports&city=brooklyn&apikey=GakWWYs0kV9kTWdT89oUptSkOAUQwMz5")
+        .then(r => r.json()).then(object => {
+            let row_div= document.createElement('div')
 
-//             object._embedded.events.forEach((event,index) => {
+            object._embedded.events.forEach((event,index) => {
       
-//                 let single_event_div = document.createElement('div')
-//                 single_event_div.classList.add('show-page-col')
-//                 single_event_div.classList.add('col-4')
-//                 single_event_div.style = 'border:solid 1px;'
-//                 // Inner heml shouldn't have another div 
-//                 single_event_div.innerHTML = `
-//                 <p class = 'right'> Have Fun!!!! </p>
-//                 <img id = 'show_event_img' src = ${event.images[0].url}> 
-//                 <h4 id ='show_event_name'> ${event.name} </h4>
-//                 <h5 id ='show_event_time'>${event.dates.start.localDate}, at ${event.dates.start.localTime}</h5>
-//                 <button id = 'event_buy_ticket'> Buy Ticket </button>
+                let single_event_div = document.createElement('div')
+                single_event_div.classList.add('show-page-col')
+                single_event_div.classList.add('col-4')
+                single_event_div.style = 'border:solid 1px;'
+                // Inner heml shouldn't have another div 
+                single_event_div.innerHTML = `
+                <p class = 'right'> Have Fun!!!! </p>
+                <img id = 'show_event_img' src = ${event.images[0].url}> 
+                <h4 id ='show_event_name'> ${event.name} </h4>
+                <h5 id ='show_event_time'>${event.dates.start.localDate}, at ${event.dates.start.localTime}</h5>
+                <button id = 'event_buy_ticket'> Buy Ticket </button>
 
-//                 `
+                `
 
-//                 // buy ticket
+                // buy ticket
 
-//                 let buy_ticket = single_event_div.querySelector('#event_buy_ticket')
-//                 buy_ticket.addEventListener('click', e => {
-//                     alert('Please sign in to buy a ticket!!')
-//                 })
+                let buy_ticket = single_event_div.querySelector('#event_buy_ticket')
+                buy_ticket.addEventListener('click', e => {
+                    alert('Please sign in to buy a ticket!!')
+                })
 
 
 
-//                 // row_div.append(single_event_div)
-//                 row_div.classList.add('row')
-//                 show_page_div.append(single_event_div)
+                // row_div.append(single_event_div)
+                row_div.classList.add('row')
+                show_page_div.append(single_event_div)
 
-//             }) // end of foreach   
+            }) // end of foreach   
     
-//     })// end of sport fetch 
+    })// end of sport fetch 
 
-//     // Welcome button to go back to home page
+    // Welcome button to go back to home page
 
-//             welcome_btn.addEventListener('click', e=>{
-//                       planner_page_div.innerHTML =''
-//                     planner_page_div.style.display ='none'
-//                     show_page_div.innerHTML =''
-//                     main_div.style.display = 'block'
-//             })
-// }) // end of sport_btn 
+            welcome_btn.addEventListener('click', e=>{
+                      planner_page_div.innerHTML =''
+                    planner_page_div.style.display ='none'
+                    show_page_div.innerHTML =''
+                    main_div.style.display = 'block'
+            })
+}) // end of sport_btn 
 
 
 // Art page
@@ -375,56 +375,56 @@ art_btn.addEventListener('click', e=> {
     })
 }) // end of arts_btn 
 
-// // Muisc page
+// Muisc page before when logged in:
 
-// music_btn.addEventListener('click', e=> {
-//     planner_page_div.innerHTML =''
+music_btn.addEventListener('click', e=> {
+    planner_page_div.innerHTML =''
 
-//     main_div.style.display = 'none'
-//     // let show_page_div = document.querySelector('#show-page-div')
-//         show_page_div.innerHTML =''
+    main_div.style.display = 'none'
+    // let show_page_div = document.querySelector('#show-page-div')
+        show_page_div.innerHTML =''
        
-//         fetch("https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=345&apikey=GakWWYs0kV9kTWdT89oUptSkOAUQwMz5")
-//         .then(r => r.json()).then(object => {
-//             let row_div= document.createElement('div')
+        fetch("https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=345&apikey=GakWWYs0kV9kTWdT89oUptSkOAUQwMz5")
+        .then(r => r.json()).then(object => {
+            let row_div= document.createElement('div')
 
-//             object._embedded.events.forEach((event,index) => {
+            object._embedded.events.forEach((event,index) => {
       
-//                 let single_event_div = document.createElement('div')
-//                 single_event_div.classList.add('show-page-col')
-//                 single_event_div.classList.add('col-4')
-//                 single_event_div.style = 'border:solid 1px;'
-//                 // Inner heml shouldn't have another div 
-//                 single_event_div.innerHTML = `
-//                 <p class = 'right'> Have Fun!!!! </p>
-//                 <img id = 'show_event_img' src = ${event.images[0].url}> 
-//                 <h4 id ='show_event_name'> ${event.name} </h4>
-//                 <h5 id ='show_event_time'>${event.dates.start.localDate}, at ${event.dates.start.localTime}</h5>
-//                 <button id = 'event_buy_ticket'> Buy Ticket </button>
-//                 `
-//                 let buy_ticket = single_event_div.querySelector('#event_buy_ticket')
-//                 buy_ticket.addEventListener('click', e => {
-//                     alert('Please sign in to buy a ticket!!')
-//                 })
+                let single_event_div = document.createElement('div')
+                single_event_div.classList.add('show-page-col')
+                single_event_div.classList.add('col-4')
+                single_event_div.style = 'border:solid 1px;'
+                // Inner heml shouldn't have another div 
+                single_event_div.innerHTML = `
+                <p class = 'right'> Have Fun!!!! </p>
+                <img id = 'show_event_img' src = ${event.images[0].url}> 
+                <h4 id ='show_event_name'> ${event.name} </h4>
+                <h5 id ='show_event_time'>${event.dates.start.localDate}, at ${event.dates.start.localTime}</h5>
+                <button id = 'event_buy_ticket'> Buy Ticket </button>
+                `
+                let buy_ticket = single_event_div.querySelector('#event_buy_ticket')
+                buy_ticket.addEventListener('click', e => {
+                    alert('Please sign in to buy a ticket!!')
+                })
 
-//                 // row_div.append(single_event_div)
-//                 row_div.classList.add('row')
-//                 show_page_div.append(single_event_div)
+                // row_div.append(single_event_div)
+                row_div.classList.add('row')
+                show_page_div.append(single_event_div)
 
-//             }) // end of foreach   
+            }) // end of foreach   
     
-//     })// end of arts fetch 
+    })// end of arts fetch 
 
-//           // Welcome button to go back to home page
+          // Welcome button to go back to home page
 
-//           welcome_btn.addEventListener('click', e=>{
-//             planner_page_div.innerHTML =''
-//             planner_page_div.style.display ='none'
-//             show_page_div.innerHTML =''
-//             main_div.style.display = 'block'
-//          })
+          welcome_btn.addEventListener('click', e=>{
+            planner_page_div.innerHTML =''
+            planner_page_div.style.display ='none'
+            show_page_div.innerHTML =''
+            main_div.style.display = 'block'
+         })
 
-// }) // end of music btn  
+}) // end of music btn  
 
 // Sign in button on homepage , brings up the form 
 
