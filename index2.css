@@ -656,3 +656,26 @@ canvas{
 #planner_h2{
     text-align: center;
 }
+
+.instructions{
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  padding: 5%;
+  margin-top: 5%;
+  font-size:110%;
+}
+
+#thankyou-message{
+  padding: 5%;
+  margin-top: 0%;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  padding: 5%;
+  margin-top: 5%;
+  font-size:110%;
+}
+
+#instructions-div{
+  display: block;
+}
+

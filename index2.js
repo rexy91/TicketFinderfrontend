@@ -21,6 +21,7 @@ const search_bar_col = document.querySelector('.search-bar-col')
 const nav_bar = document.querySelector('#nav-bar')
 const form_title = document.querySelector('#form-title')
 const main_div = document.querySelector('.main-div')
+const instruction = document.querySelector('#instructions-div')
 
 // main page event div 
 const main_page_first_event = document.querySelector('.event-photo-col')
@@ -87,6 +88,7 @@ else{
         personal_planner_btn.style.display ='block'
         signout_btn.style.display='block'
         review_button.style.display='block'
+        instruction.style.display ='none'
         update_btn.style.display ='block'
         login_form.style.display ='none'
         main_div.style.display = 'block'
