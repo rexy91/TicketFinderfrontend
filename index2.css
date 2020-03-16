@@ -480,9 +480,8 @@ body{
 }
 
 #lebron-photo{
-  
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     float: left;
     overflow: hidden;
     position: relative;
@@ -509,8 +508,8 @@ body{
 
 
 #harden-photo{
-  /* width: 100%;
-  height: 100%; */
+  width: 100%;
+  height: 100%;
   float: left;
   overflow: hidden;
   position: relative;
