@@ -1,5 +1,5 @@
 // Fetch Urls
-const review_url = "http://localhost:3000/reviews"
+const review_url = "https://ticketfinderbackend.herokuapp.com//reviews"
 const stars = document.querySelectorAll('.fa')
 const sport_btn = document.querySelector('#sport-btn')
 const music_btn = document.querySelector('#music-btn')
@@ -335,7 +335,7 @@ art_btn.addEventListener('click', e=> {
         alert('Password can not be blank.')
     }
     else{
-            fetch("http://localhost:3000/users", {
+            fetch("https://ticketfinderbackend.herokuapp.com//users", {
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/json',
@@ -388,7 +388,7 @@ art_btn.addEventListener('click', e=> {
                         planner_header.style.display ='block'
                         planner_page_div.innerHTML=''
                         
-                        fetch(`http://localhost:3000/users/${new_user.id}`,{
+                        fetch(`https://ticketfinderbackend.herokuapp.com//users/${new_user.id}`,{
                             method:'GET',
                             headers:{
                                 'Content-Type': 'application/json',
@@ -477,7 +477,7 @@ art_btn.addEventListener('click', e=> {
             
             let new_user_name = e.target.new_user_name.value
 
-            fetch(`http://localhost:3000/users/${new_user.id}`, {
+            fetch(`https://ticketfinderbackend.herokuapp.com//users/${new_user.id}`, {
                 method: "PATCH",
                 headers:{
                     'Content-Type': 'application/json',
@@ -549,7 +549,7 @@ object._embedded.events.forEach((event,index) => {
     buy_ticket.addEventListener('click', e => {
         alert('Congratsss, you have bought a ticket for this event!! Check your planner. Click "Welcome" to go back to home page')
         //fetch
-        fetch("http://localhost:3000/tickets", {
+        fetch("https://ticketfinderbackend.herokuapp.com//tickets", {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
@@ -626,7 +626,7 @@ object._embedded.events.forEach((event,index) => {
         console.log('inside current user fetch art buy button')
         alert('Congratsss, you have bought a ticket for this event!! Check your planner. Click "Welcome" to go back to home page')
         //fetch
-        fetch("http://localhost:3000/tickets", {
+        fetch("https://ticketfinderbackend.herokuapp.com//tickets", {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
@@ -704,7 +704,7 @@ art_btn.addEventListener('click', e=> {
                     alert('Congratsss, you have bought a ticket for this event!! Check your planner. Click "Welcome" to go back to home page')
 
                         //fetch
-                        fetch("http://localhost:3000/tickets", {
+                        fetch("https://ticketfinderbackend.herokuapp.com//tickets", {
                             method: 'POST',
                             headers:{
                                 'Content-Type': 'application/json',
