@@ -1,5 +1,6 @@
 // Fetch Urls
-const review_url = "https://ticketfinderbackend.herokuapp.com//reviews"
+// const review_url = "https://ticketfinderbackend.herokuapp.com/reviews"
+const review_url = "https://ticketfinderbackend.herokuapp.com/reviews"
 const stars = document.querySelectorAll('.fa')
 const sport_btn = document.querySelector('#sport-btn')
 const music_btn = document.querySelector('#music-btn')
@@ -48,37 +49,162 @@ close_review_form_btn.addEventListener('click', e=> {
 })
 
 // When user is not logged in , dont allow writing review.
-review_form.addEventListener('submit', e => {
-        e.preventDefault()
-        alert('Please sign in to leave a review.')
-})
+// review_form.addEventListener('submit', e => {
+//         e.preventDefault()
+//         alert('Please sign in to leave a review.')
+// })
 
-// New comment
-function new_comment(new_user){
-review_form.addEventListener('submit', e => {
-    console.log('hi')
+
+// Sign in form
+// Post fetch to users
+
+login_signup_form_submit.addEventListener('submit', (e) => {
     e.preventDefault()
-    let new_comment = e.target.user_review.value
-    // let new_user = e.target.user_name.value
-    let new_rating = e.target.rating_dropdown.value
-    let user_name = e.target.username.value
-    // POST fetch for new comment 
-    fetch(review_url, {
+    let username = e.target.username_value.value
+    let password = e.target.password_value.value
+if(username.length === 0){
+alert('Username can not be blank.')
+}
+else if (password.length === 0){
+alert('Password can not be blank.')
+}
+else{
+    fetch("https://ticketfinderbackend.herokuapp.com/users", {
         method: 'POST',
         headers:{
             'Content-Type': 'application/json',
-            Accept: 'application/json'
+             Accept: 'application/json'
         },
-        body: JSON.stringify({
-
-            rating: new_rating,
-            content: new_comment,
-            user_name : new_user.username,
-            // Pass extra info through fetch into params:
-            userId: new_user.id
+        body:JSON.stringify({
+            username,
+            password
+        })
+    })// end of fetch 
+    .then(res=>res.json())
+    .then(new_user => {
+        // Will only work if new login 
+        // SHow/hide after login 
+        personal_planner_btn.style.display ='block'
+        signout_btn.style.display='block'
+        review_button.style.display='block'
+        update_btn.style.display ='block'
+        login_form.style.display ='none'
+        main_div.style.display = 'block'
+        home_page_sign_in_btn.style.display ='none'
+        let current_user_tag = document.createElement('h5')
+        current_user_tag.id = 'current_user'
+        current_user_tag.innerHTML = `Current User: ${new_user.username}`
+        nav_bar.append(current_user_tag)
+        signOutFunction(new_user, current_user_tag)
+        new_comment(new_user)
+        updateUserName(new_user, current_user_tag)
+        showPersonalPlanner(personal_planner_btn,new_user)
+        
+        // Call fetch functions inside login block, so can pass in user.
+        // Refactor later 
+            sportsFetch(new_user)
+            artsFetch(new_user)
+            musicFetch(new_user)
             
-        })
-        })
+    // Welcome button to go back to home page
+        welcome_btn.addEventListener('click', e=>{
+            planner_header.style.display ='none'
+            planner_page_div.innerHTML =''
+            planner_page_div.style.display ='none'
+
+}) 
+    })// End of fetch .then 
+}
+    // Personal Planner eventListener after login 
+    function showPersonalPlanner(personal_planner_btn,new_user){
+            personal_planner_btn.addEventListener('click', e=> {
+                
+                planner_header.innerHTML = `<h2 id='planner_h2'>Your Upcoming Events</h2>`
+                planner_header.style.display ='block'
+                planner_page_div.innerHTML=''
+                
+                fetch(`https://ticketfinderbackend.herokuapp.com/users/${new_user.id}`,{
+                    method:'GET',
+                    headers:{
+                        'Content-Type': 'application/json',
+                        Accept: 'application/json'
+                    }
+                })//end of ticket GET fetch 
+                .then(res => res.json())
+                .then(userObj => {
+                    userObj.tickets.forEach(ticket => {
+                        let single_event_div = document.createElement('div')
+                        single_event_div.classList.add('show-page-col')
+                    single_event_div.classList.add('col-4')
+                    single_event_div.style = 'border:solid 1px;'
+                    // Inner html shouldn't have another div 
+                    single_event_div.innerHTML = `
+                    <img id = 'show_event_img' src = ${ticket.image}> 
+                    <h4 id ='show_event_name'> ${ticket.name} </h4>
+                    <h5 id ='show_event_time'>${ticket.time}</h5>
+                    `
+                planner_page_div.append(single_event_div)
+                    })
+                })
+
+                planner_page_div.style.display ='block'
+                main_div.style.display = 'none'
+                // Fetch user's ticket page, localhost//users, since it also renders user's tickets.
+                new_user.tickets.forEach(ticket => { 
+      
+                //     let single_event_div = document.createElement('div')
+                //     single_event_div.classList.add('show-page-col')
+                //     single_event_div.classList.add('col-4')
+                //     single_event_div.style = 'border:solid 1px;'
+                //     // Inner html shouldn't have another div 
+                //     single_event_div.innerHTML = `
+                //     <img id = 'show_event_img' src = ${ticket.image}> 
+                //     <h4 id ='show_event_name'> ${ticket.name} </h4>
+                //     <h5 id ='show_event_time'>${ticket.time}</h5>
+                //     `
+                // planner_page_div.append(single_event_div)
+            })
+        })//end of forEach
+    }
+
+// Sign Out button
+// Fake sign out because in mod 3 sessions can't be persisted in front end.
+function signOutFunction(new_user, current_user_tag){
+signout_btn.addEventListener('click', (e) => {
+        current_user_tag.style.display ='none'
+        signout_btn.style.display='none'
+        home_page_sign_in_btn.style.display ='block'
+        personal_planner_btn.style.display = 'none'
+        update_btn.style.display = 'none'
+
+})
+}
+}) // End of Login function 
+
+
+// New comment
+function new_comment(new_user){
+    review_form.addEventListener('submit', e => {
+        e.preventDefault()
+        let new_comment = e.target.user_review.value
+        let new_rating = e.target.rating_dropdown.value
+        let user_name = new_user.username
+        // POST fetch for new comment 
+
+        fetch(review_url, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify({
+                rating: new_rating,
+                content: new_comment,
+                user_name,
+                // Pass extra info through fetch into params:
+                userId: new_user.id
+            })
+            })
         .then(res => res.json())
         .then(obj => {
             console.log(obj)
@@ -112,7 +238,7 @@ checkStars(obj.rating)
 fetch(review_url)
 .then(res => res.json())
 .then(reviews => {
-
+        console.log(reviews)
         reviews.forEach(review => {
             addReviewToDOM(review)
         })
@@ -321,132 +447,6 @@ art_btn.addEventListener('click', e=> {
      
     })
 
-
-// Sign in form
-// Post fetch to users
-    login_signup_form_submit.addEventListener('submit', (e) => {
-            e.preventDefault()
-            let username = e.target.username_value.value
-            let password = e.target.password_value.value
-    if(username.length === 0){
-        alert('Username can not be blank.')
-    }
-    else if (password.length === 0){
-        alert('Password can not be blank.')
-    }
-    else{
-            fetch("https://ticketfinderbackend.herokuapp.com//users", {
-                method: 'POST',
-                headers:{
-                    'Content-Type': 'application/json',
-                     Accept: 'application/json'
-                },
-                body:JSON.stringify({
-                    username,
-                    password
-                })
-            })// end of fetch 
-            .then(res=>res.json())
-            .then(new_user => {
-                // Will only work if new login 
-                // SHow/hide after login 
-                personal_planner_btn.style.display ='block'
-                signout_btn.style.display='block'
-                update_btn.style.display ='block'
-                login_form.style.display ='none'
-                main_div.style.display = 'block'
-                home_page_sign_in_btn.style.display ='none'
-                let current_user_tag = document.createElement('h5')
-                current_user_tag.id = 'current_user'
-                current_user_tag.innerHTML = `Current User: ${new_user.username}`
-                nav_bar.append(current_user_tag)
-                signOutFunction(new_user, current_user_tag)
-                new_comment(new_user)
-                updateUserName(new_user, current_user_tag)
-                showPersonalPlanner(personal_planner_btn,new_user)
-                
-                // Call fetch functions inside login block, so can pass in user.
-                // Refactor later 
-                    sportsFetch(new_user)
-                    artsFetch(new_user)
-                    musicFetch(new_user)
-                    
-            // Welcome button to go back to home page
-                welcome_btn.addEventListener('click', e=>{
-                    planner_header.style.display ='none'
-                    planner_page_div.innerHTML =''
-                    planner_page_div.style.display ='none'
-
-     }) 
-            })// End of fetch .then 
-        }
-            // Personal Planner eventListener after login 
-            function showPersonalPlanner(personal_planner_btn,new_user){
-                    personal_planner_btn.addEventListener('click', e=> {
-                        
-                        planner_header.innerHTML = `<h2 id='planner_h2'>Your Upcoming Events</h2>`
-                        planner_header.style.display ='block'
-                        planner_page_div.innerHTML=''
-                        
-                        fetch(`https://ticketfinderbackend.herokuapp.com//users/${new_user.id}`,{
-                            method:'GET',
-                            headers:{
-                                'Content-Type': 'application/json',
-                                Accept: 'application/json'
-                            }
-                        })//end of ticket GET fetch 
-                        .then(res => res.json())
-                        .then(userObj => {
-                            userObj.tickets.forEach(ticket => {
-                                let single_event_div = document.createElement('div')
-                                single_event_div.classList.add('show-page-col')
-                            single_event_div.classList.add('col-4')
-                            single_event_div.style = 'border:solid 1px;'
-                            // Inner html shouldn't have another div 
-                            single_event_div.innerHTML = `
-                            <img id = 'show_event_img' src = ${ticket.image}> 
-                            <h4 id ='show_event_name'> ${ticket.name} </h4>
-                            <h5 id ='show_event_time'>${ticket.time}</h5>
-                            `
-                        planner_page_div.append(single_event_div)
-                            })
-                        })
-
-                        planner_page_div.style.display ='block'
-                        main_div.style.display = 'none'
-                        // Fetch user's ticket page, localhost//users, since it also renders user's tickets.
-                        new_user.tickets.forEach(ticket => { 
-              
-                        //     let single_event_div = document.createElement('div')
-                        //     single_event_div.classList.add('show-page-col')
-                        //     single_event_div.classList.add('col-4')
-                        //     single_event_div.style = 'border:solid 1px;'
-                        //     // Inner html shouldn't have another div 
-                        //     single_event_div.innerHTML = `
-                        //     <img id = 'show_event_img' src = ${ticket.image}> 
-                        //     <h4 id ='show_event_name'> ${ticket.name} </h4>
-                        //     <h5 id ='show_event_time'>${ticket.time}</h5>
-                        //     `
-                        // planner_page_div.append(single_event_div)
-                    })
-                })//end of forEach
-            }
-
-        // Sign Out button
-        // Fake sign out because in mod 3 sessions can't be persisted in front end.
-    function signOutFunction(new_user, current_user_tag){
-        signout_btn.addEventListener('click', (e) => {
-                current_user_tag.style.display ='none'
-                signout_btn.style.display='none'
-                home_page_sign_in_btn.style.display ='block'
-                personal_planner_btn.style.display = 'none'
-                update_btn.style.display = 'none'
-
-        })
-    }
-    }) // End of Login 
-
-
 // FOrgot password
 
     forgot_password.addEventListener('click', (e) => {
@@ -464,10 +464,8 @@ art_btn.addEventListener('click', e=> {
             update_form.style='block'
             form_title.innerText = 'Update Username'  
             // Update function 
-            
-            
-    })
 
+    })
     // Update username function: 
     // Need ID 
     function updateUserName(new_user,current_user_tag){
@@ -476,8 +474,7 @@ art_btn.addEventListener('click', e=> {
             e.preventDefault()
             
             let new_user_name = e.target.new_user_name.value
-
-            fetch(`https://ticketfinderbackend.herokuapp.com//users/${new_user.id}`, {
+            fetch(`https://ticketfinderbackend.herokuapp.com/users/${new_user.id}`, {
                 method: "PATCH",
                 headers:{
                     'Content-Type': 'application/json',
@@ -549,7 +546,7 @@ object._embedded.events.forEach((event,index) => {
     buy_ticket.addEventListener('click', e => {
         alert('Congratsss, you have bought a ticket for this event!! Check your planner. Click "Welcome" to go back to home page')
         //fetch
-        fetch("https://ticketfinderbackend.herokuapp.com//tickets", {
+        fetch("https://ticketfinderbackend.herokuapp.com/tickets", {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
@@ -626,7 +623,7 @@ object._embedded.events.forEach((event,index) => {
         console.log('inside current user fetch art buy button')
         alert('Congratsss, you have bought a ticket for this event!! Check your planner. Click "Welcome" to go back to home page')
         //fetch
-        fetch("https://ticketfinderbackend.herokuapp.com//tickets", {
+        fetch("https://ticketfinderbackend.herokuapp.com/tickets", {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
@@ -704,7 +701,7 @@ art_btn.addEventListener('click', e=> {
                     alert('Congratsss, you have bought a ticket for this event!! Check your planner. Click "Welcome" to go back to home page')
 
                         //fetch
-                        fetch("https://ticketfinderbackend.herokuapp.com//tickets", {
+                        fetch("https://ticketfinderbackend.herokuapp.com/tickets", {
                             method: 'POST',
                             headers:{
                                 'Content-Type': 'application/json',
