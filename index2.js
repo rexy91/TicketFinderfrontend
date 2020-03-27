@@ -1,5 +1,4 @@
 // Fetch Urls
-// const review_url = "https://ticketfinderbackend.herokuapp.com/reviews"
 const review_url = "https://ticketfinderbackend.herokuapp.com/reviews"
 const stars = document.querySelectorAll('.fa')
 const sport_btn = document.querySelector('#sport-btn')
@@ -718,23 +717,6 @@ art_btn.addEventListener('click', e=> {
                         })// End of fetch 
                         .then(res => res.json())
                         .then(newTicket => {
-                       
-                             
-            
-                                //     let single_event_div = document.createElement('div')
-                                //     single_event_div.classList.add('show-page-col')
-                                //     single_event_div.classList.add('col-4')
-                                //     single_event_div.style = 'border:solid 1px;'
-                                //     // Inner html shouldn't have another div 
-                                //     single_event_div.innerHTML = `
-                                //     <img id = 'show_event_img' src = ${newTicket.image}> 
-                                //     <h4 id ='show_event_name'> ${newTicket.name} </h4>
-                                //     <h5 id ='show_event_time'>${newTicket.time}</h5>
-                                //     `
-                                // planner_page_div.append(single_event_div)
-
-
-
 
 
                         })

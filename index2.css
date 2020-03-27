@@ -21,7 +21,7 @@ body{
     text-transform: uppercase;
     font-size: 180%;
     /* padding-top: 20px; */
-    padding: 43px;
+    padding: 43px; 
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   
     /* margin: 5px; */
@@ -679,3 +679,9 @@ canvas{
   display: block;
 }
 
+body{
+  margin: 0vw;
+}
+
+
+/* Revised */
