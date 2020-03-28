@@ -682,3 +682,12 @@ body{
 #signin-button{
     margin-top: 25px;
 }
+
+#footer{
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  font-weight: bolder;
+  margin-top: 25px;
+
+}
