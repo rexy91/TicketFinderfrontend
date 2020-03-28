@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container-fluid">
-            <div class="row header-row bg-primary" id ="main-header">
+            <div class="row header-row bg-primary" id ="main-header2">
                 <div class="navbar navbar-expand-sm navbar-dark text-white my-header col-lg-6" id='nav-bar'> 
                     TicketFinder
                     <button id='welcome-button' class = 'clicked closed'> Welcome!!</button>
@@ -66,9 +66,55 @@
             </div>
         </div>
         <!-- end of signup/signin  -->
-
+                <!-- with class name col, will always take 12 columns on any screen sizes.  -->
                 <div class="col search-bar-col">
                     <p id ='shining-text'>Welcome to our website.</p>
                 </div>
-</body>
+        <!-- three columns, 2 for pics, one for instruction.  -->
+        <div class="row">
+            <div class = "col-lg-4" style="margin-right:-1.5vw;">
+                <div id='lebron-photo'>
+                    <img src="https://avante.biz/wp-content/uploads/Patriots-Wallpaper/Patriots-Wallpaper-001.jpg" class="img-fluid" alt="Responsive image">
+                </div>
+
+                <div id='nba-img'>
+                    <img src="https://cdn.nba.net/nba-drupal-prod/2018-08/leaguev3.jpeg" class="img-fluid" alt="Responsive image" height='60px'>
+                </div>
+            </div>
+            <div class ="col-lg-6">
+                <div id='broadway-upcoming-img'>     
+                    <img src="https://bsp-static.playbill.com/dims4/default/21e5e92/2147483647/crop/2020x1137%2B0%2B0/resize/970x546/quality/90/?url=http%3A%2F%2Fpb-asset-replication.s3.amazonaws.com%2F14%2Fd6%2Fcbafa3d1426db7d09abd267e192f%2Fupcoming-broadway.jpg" class="img-fluid" alt="Responsive image">
+                </div> 
+            </div>
+            <div class = "col-lg-2">
+                <div id = 'instructions-div'>
+                    <p class = 'instructions'>Click 'Welcome' to go back to the home page. </p>
+                    <p class = 'instructions'>You will be able to leave a comment and view your personal planner after signing in.</p>
+                    <p class = 'instructions'>Thank you for visiting.</p>
+                    <button id='review-button' style = 'display: none;' class = 'clicked closed'> Leave Review </button>
+                    <form id ='review-form' class="w3-container" style="display:none;">
+                      <label class="w3-text-blue"><b>Review</b></label>
+                      <br>
+                            <label for="">Rating</label>
+                            <select name = 'rating_dropdown' class ='rating-dropdown'>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            </select>
+                            <textarea class="w3-input w3-border" id='user_review' type="text" rows="7" placeholder="sign in required to leave review"></textarea>
+                            <button type = 'button' class="w3-btn w3-blue" id='close_form_btn' >Close</button>
+                            <button class="w3-btn w3-blue">Submit</button>
+                    </form>
+                      <!-- <input type="submit"/> -->
+                                 <!-- onclick, calling the function inside the html tag -->
+
+                      <button type = 'button' class="w3-btn w3-blue" id = 'personal-planner'style='display:none;' >Personal Planner</button>
+                      <button type = 'button' id ='update-button' style="display: none"> Update Info</button>
+                     
+
+                  </div>
+            </div>
+        </div>
 </html>

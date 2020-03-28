@@ -240,6 +240,7 @@ body{
 .sports-btn{
     border-radius: 20px;
     padding: 10px;
+    margin-top: 25px;
 }
 
 .another-eventphoto-div{
@@ -475,7 +476,8 @@ body{
 
 #lebron-photo{
     width: 100%;
-    /* height: 100%; */
+    /* height of the pic not column */
+    /* height: 200px; */ 
     float: left;
     overflow: hidden;
     position: relative;
@@ -531,7 +533,6 @@ body{
 /* broadway img hover */
 
 #broadway-upcoming-img {
-
   float: left;
   overflow: hidden;
   position: relative;
@@ -545,6 +546,7 @@ body{
   position: relative;
   max-width: none;
   width: calc(100% + 60px);
+  /* height: 500px; */
   -webkit-transition: opacity 0.35s, -webkit-transform 0.45s;
   transition: opacity 0.35s, transform 0.45s;
   -webkit-transform: translate3d(-40px,0,0);
@@ -559,9 +561,9 @@ body{
 }
 
 /* superbowl img */
-#superbowl-img{
-  width: 100%;
-  height: 100%;
+#nba-img{
+  /* width: 100%; */
+  /* height: 100%; */
   float: left;
   overflow: hidden;
   position: relative;
@@ -571,14 +573,14 @@ body{
 }
 
 
-#superbowl-img img {
+#nba-img img {
 display: block;
 position: relative;
 -webkit-transition: all 0.4s cubic-bezier(0.88,-0.99, 0, 1.81);
 transition: all 0.4s cubic-bezier(0.88,-0.99, 0, 1.81);
 }
 
-#superbowl-img:hover img {
+#nba-img:hover img {
 -ms-transform: scale(1.2);
 -webkit-transform: scale(1.2);
 transform: scale(1.2);
@@ -679,3 +681,7 @@ body{
 
 
 /* Revised */
+
+#signin-button{
+    margin-top: 25px;
+}
