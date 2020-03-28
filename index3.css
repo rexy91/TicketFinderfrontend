@@ -257,11 +257,8 @@ body{
     /* background-color: cornsilk;; */
 }
 
-.chat-box-possible{
-
-    border: solid 1px;
-    height: 240px;
-
+.spotify-box{
+  
 }
 
 #buy-button{
@@ -533,6 +530,7 @@ body{
 /* broadway img hover */
 
 #broadway-upcoming-img {
+  
   float: left;
   overflow: hidden;
   position: relative;
@@ -545,6 +543,7 @@ body{
   display: block;
   position: relative;
   max-width: none;
+  height: 99.5%;
   width: calc(100% + 60px);
   /* height: 500px; */
   -webkit-transition: opacity 0.35s, -webkit-transform 0.45s;
@@ -563,7 +562,6 @@ body{
 /* superbowl img */
 #nba-img{
   /* width: 100%; */
-  /* height: 100%; */
   float: left;
   overflow: hidden;
   position: relative;
@@ -572,8 +570,8 @@ body{
 
 }
 
-
 #nba-img img {
+margin-bottom: 0.5vh;
 display: block;
 position: relative;
 -webkit-transition: all 0.4s cubic-bezier(0.88,-0.99, 0, 1.81);
