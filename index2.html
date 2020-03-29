@@ -15,6 +15,7 @@
             <div class="row header-row bg-primary" id ="main-header2">
                     <div class="navbar navbar-expand-sm navbar-dark text-white my-header col-lg-6" id='nav-bar'> 
                         TicketFinder
+                        <button type = 'button' id ='signout-button' style="display: none;"> Sign Out</button>
                         <button id='welcome-button' class = 'clicked closed'> Welcome!!</button>
                     </div>
                     <div class="col-lg-3">
@@ -38,8 +39,8 @@
 
         <!-- Sign Up / Sign In Form-->
         <div class="container login-container" id='login-form' style='display:none'>
-            <div class="row">
-                <div class="col-md-6 login-form-1">
+            <!-- <div class="row"> -->
+                <div class="login-form-1">
                     <h3 id = 'form-title'>Please Login</h3>
                     <form id='signin-signup-submit' >
                         <div class="form-group">
@@ -53,7 +54,6 @@
                         <div class="form-group">
                             <input type="submit" class="btnSubmit" id='signin' value="Login" />
                             <input type="submit" value='Signup'>
-  
                         </div>
                     </form>
                     
@@ -65,15 +65,16 @@
                       <div class="form-group">
                           <input type="submit" class="btnSubmit" id='update' value="Update Username" />
                       </div>
-                      <div class="form-group">
-                          <a href="#" class="ForgetPwd" id ='forgot-password'>Forget Password?</a>
-                      </div>
+                         <div class="form-group">
+                             <a href="#" class="ForgetPwd" id ='forgot-password'>Forget Password?</a>
+                        </div>
                   </form>
-                </div>
                 </div>
             </div>
         </div>
         <!-- end of signup/signin  -->
+
+    <div class="main-div">
                 <!-- with class name col, will always take 12 columns on any screen sizes.  -->
                 <div class="col search-bar-col">
                     <p id ='shining-text'>Welcome to our website.</p>
@@ -95,7 +96,7 @@
                         </div> 
                     </div>
                     <div class = "col-lg-2 comment-button-col">
-                        <div id = 'instructions-div'>
+                        <div id = 'instructions-div' >
                                     <p class = 'instructions'>Click 'Welcome' to go back to the home page. </p>
                                     <p class = 'instructions'>You will be able to leave a comment and view your personal planner after signing in.</p>
                                     <p class = 'instructions'>Thank you for visiting.</p>
@@ -117,10 +118,10 @@
                                     </form>
                                     <!-- <input type="submit"/> -->
                                                 <!-- onclick, calling the function inside the html tag -->
-
+                        </div>
                                     <button type = 'button' class="w3-btn w3-blue" id = 'personal-planner'style='display:none;' >Personal Planner</button>
                                     <button type = 'button' id ='update-button' style="display: none"> Update Info</button>
-                        </div>
+                        
                     </div>
              </div>
                 <!-- row for comment box, review pic, and spotify player.  -->
@@ -133,11 +134,11 @@
                  </div>
 
                  <!-- large screen take 3 column, anything below large screen take whole width by default. -->
-                 <div class="col-lg-5 spotify-box">
-                    <iframe src="https://open.spotify.com/embed/playlist/0dZ163WV7VaNfB4ylsJ8Vi" width="550" height="300" frameborder="0" color="white" allowtransparency="true" allow="encrypted-media"></iframe>
+                 <div class="col-lg-4 spotify-box">
+                    <iframe src="https://open.spotify.com/embed/playlist/0dZ163WV7VaNfB4ylsJ8Vi" width="570" height="300" frameborder="0" color="white" allowtransparency="true" allow="encrypted-media"></iframe>
                  </div>
                  <!-- take 12 below large screen  -->
-                 <div class="col-lg-2 review-photo">
+                 <div class="col-lg-3 review-photo">
                     <img src="http://authorceo.com/wp-content/uploads/2013/09/Depositphotos_27032441_s.jpg" alt="" width="100%" height = '100%'>
                  </div>
              </div>
@@ -148,9 +149,7 @@
                 </div>
             </div>
 
-
-        </div> <!-- main container-->
-            
-
+     </div> <!-- main container-->
+     
 </body>
 </html>

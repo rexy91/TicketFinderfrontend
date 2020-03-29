@@ -272,6 +272,7 @@ checkStars(review.rating)
 
 }
 
+
 // Sports page when not logged in:
 sport_btn.addEventListener('click', e=> {
     planner_page_div.innerHTML =''
@@ -284,10 +285,10 @@ sport_btn.addEventListener('click', e=> {
             let row_div= document.createElement('div')
 
             object._embedded.events.forEach((event,index) => {
-      
+
                 let single_event_div = document.createElement('div')
                 single_event_div.classList.add('show-page-col')
-                single_event_div.classList.add('col-4')
+                single_event_div.classList.add('col-lg-4')
                 single_event_div.style = 'border:solid 1px;'
                 // Inner heml shouldn't have another div 
                 single_event_div.innerHTML = `
@@ -296,7 +297,6 @@ sport_btn.addEventListener('click', e=> {
                 <h4 id ='show_event_name'> ${event.name} </h4>
                 <h5 id ='show_event_time'>${event.dates.start.localDate}, at ${event.dates.start.localTime}</h5>
                 <button id = 'event_buy_ticket'> Buy Ticket </button>
-
                 `
 
                 // buy ticket
@@ -343,7 +343,7 @@ art_btn.addEventListener('click', e=> {
       
                 let single_event_div = document.createElement('div')
                 single_event_div.classList.add('show-page-col')
-                single_event_div.classList.add('col-4')
+                single_event_div.classList.add('col-lg-4')
                 single_event_div.style = 'border:solid 1px;'
                 // Inner heml shouldn't have another div 
                 single_event_div.innerHTML = `
@@ -393,8 +393,8 @@ music_btn.addEventListener('click', e=> {
       
                 let single_event_div = document.createElement('div')
                 single_event_div.classList.add('show-page-col')
-                single_event_div.classList.add('col-4')
-                single_event_div.style = 'border:solid 1px;'
+                single_event_div.classList.add('col-lg-4')
+                single_event_div.style = 'border:solid 1px; margin-bottom: 7px;'
                 // Inner heml shouldn't have another div 
                 single_event_div.innerHTML = `
                 <p class = 'right'> Have Fun!!!! </p>
@@ -444,8 +444,6 @@ music_btn.addEventListener('click', e=> {
         login_form.style.display = 'none'
 
      }) 
-     
-     
     })
 
 // FOrgot password
@@ -507,13 +505,12 @@ music_btn.addEventListener('click', e=> {
             })
         })
     }
-    
 
 
 // Sport page when logged in 
+
 function sportsFetch(new_user){
     // Sports page:
-    console.log('here')
 sport_btn.addEventListener('click', e=> {
     planner_header.style.display ='none'
 show_page_div.style.display ='block'
@@ -530,7 +527,7 @@ object._embedded.events.forEach((event,index) => {
 
     let single_event_div = document.createElement('div')
     single_event_div.classList.add('show-page-col')
-    single_event_div.classList.add('col-4')
+    single_event_div.classList.add('col-lg-12 col-12')
     single_event_div.style = 'border:solid 1px;'
     // Inner heml shouldn't have another div 
     single_event_div.innerHTML = `
@@ -593,7 +590,6 @@ function musicFetch(new_user){
 // Muisc page
 
 music_btn.addEventListener('click', e=> {
-    console.log('here')
     planner_header.style.display ='none'
     show_page_div.style.display ='block'
     planner_page_div.innerHTML =''
@@ -693,12 +689,11 @@ art_btn.addEventListener('click', e=> {
                 <img id = 'show_event_img' src = ${event.images[0].url}> 
                 <h4 id ='show_event_name'> ${event.name} </h4>
                 <h5 id ='show_event_time'>${event.dates.start.localDate}, at ${event.dates.start.localTime}</h5>
-                <button id = 'event_buy_ticket'> Buy Ticket </button>
-       
+                <button id = 'logged_in_event_buy_ticket'> Buy Ticket </button>
                 `
-                let buy_ticket = single_event_div.querySelector('#event_buy_ticket')
+                let buy_ticket = single_event_div.querySelector('#logged_in_event_buy_ticket')
                 buy_ticket.addEventListener('click', e => {
-                    
+                    console.log('here')
                     alert('Congratsss, you have bought a ticket for this event!! Check your planner. Click "Welcome" to go back to home page')
 
                         //fetch
