@@ -61,7 +61,6 @@ close_review_form_btn.addEventListener('click', e=> {
 //         alert('Please sign in to leave a review.')
 // })
 
-
 // Sign in form
 // Post fetch to users
 login_signup_form_submit.addEventListener('submit', (e) => {
@@ -95,8 +94,8 @@ else{
         sport_btn.style.display='none'
         music_btn.style.display='none'
         art_btn.style.display='none'
-        //Show show page buttons after logged in.
 
+        //Show show page buttons after logged in.
         loggedIn_sport_btn.style.display ='inline-block'
         loggedIn_music_btn.style.display ='inline-block'
         loggedIn_art_btn.style.display ='inline-block'
@@ -312,22 +311,15 @@ sport_btn.addEventListener('click', e=> {
                 <h5 id ='show_event_time'>${event.dates.start.localDate}, at ${event.dates.start.localTime}</h5>
                 <button id = 'event_buy_ticket'> Buy Ticket </button>
                 `
-
                 // buy ticket
-
                 let buy_ticket = single_event_div.querySelector('#event_buy_ticket')
                 buy_ticket.addEventListener('click', e => {
                     alert('Please sign in to buy a ticket!!')
                 })
-
-
-
                 // row_div.append(single_event_div)
                 row_div.classList.add('row')
                 show_page_div.append(single_event_div)
-
             }) // end of foreach   
-    
     })// end of sport fetch 
 
     // Welcome button to go back to home page
@@ -512,8 +504,6 @@ music_btn.addEventListener('click', e=> {
                     form_title.style.display ='none'
                     current_user_tag.innerText = `Current User: ${updated_user.username} `
                     user_name_in_review.innerText = `@${updated_user.username}`
-                    
-
             })
         })
     }
@@ -691,9 +681,7 @@ art_btn.addEventListener('click', e=> {
         fetch("https://app.ticketmaster.com/discovery/v2/events.json?keyword=ny&dmaId=345&apikey=GakWWYs0kV9kTWdT89oUptSkOAUQwMz5")
         .then(r => r.json()).then(object => {
             let row_div= document.createElement('div')
-
             object._embedded.events.forEach((event,index) => {
-      
                 let single_event_div = document.createElement('div')
                 single_event_div.classList.add('show-page-col')
                 single_event_div.classList.add('col-4')
@@ -728,7 +716,6 @@ art_btn.addEventListener('click', e=> {
                         .then(res => res.json())
                         .then(newTicket => {
 
-
                         })
 
                 }) // end of buy ticket button 
@@ -756,4 +743,35 @@ art_btn.addEventListener('click', e=> {
 
 } // End of artsfetch() function 
 
+// Show pages after 'fake' logged in, user isnt being persisted , no user Auth for this project.
+
+loggedIn_sport_btn.addEventListener('click', e => {
+    main_div.style.display = 'none'
+
+    let loggedIn_sport_showpage = document.createElement('div')
+        loggedIn_sport_showpage.classList.add('row')
+    fetch("https://app.ticketmaster.com/discovery/v2/events.json?keyword=sports&city=brooklyn&apikey=GakWWYs0kV9kTWdT89oUptSkOAUQwMz5")
+    .then(res => res.json())
+    .then(objects => {
+        objects._embedded.events.forEach(event =>{
+            // show_page_div.append('jdfjsdajfsdf')
+            // console.log(show_page_div)
+
+            let loggedIn_sport_showcard = document.createElement('div')
+                loggedIn_sport_showcard.classList.add('col-lg-4')
+                loggedIn_sport_showcard.innerHTML= `
+                <p class = 'right'> Have Fun!!!! </p>
+                <img id = 'show_event_img' src = ${event.images[0].url}> 
+                <h4 id ='show_event_name'> ${event.name} </h4>
+                <h5 id ='show_event_time'>${event.dates.start.localDate}, at ${event.dates.start.localTime}</h5>
+                <button id = 'logged_in_event_buy_ticket'> Buy Ticket </button>`
+            // append to index.html
+            // console.log(loggedIn_sport_showpage)
+            // show_page_div.append(loggedIn_sport_showpage)
+            loggedIn_sport_showpage.append(loggedIn_sport_showcard)
+            show_page_div.append(loggedIn_sport_showpage)
+            show_page_div.style.display='block'
+        })
+    })
+})
 
