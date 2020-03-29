@@ -39,7 +39,9 @@ let close_review_form_btn = document.querySelector('#close_form_btn')
 
 //Bring up the form
 review_button.addEventListener('click', e=>{
+    console.log(review_form)
     review_form.style = 'display:block;'
+    console.log(review_form)
     window.scroll(top);
 })
 
@@ -682,8 +684,7 @@ art_btn.addEventListener('click', e=> {
                 single_event_div.classList.add('show-page-col')
                 single_event_div.classList.add('col-4')
                 single_event_div.style = 'border:solid 1px;'
-                // Inner heml shouldn't have another div 
-
+                // Inner heml shouldn't have another div
                 single_event_div.innerHTML = `
                 <p class = 'right'> Have Fun!!!! </p>
                 <img id = 'show_event_img' src = ${event.images[0].url}> 
