@@ -19,9 +19,13 @@
                         <button id='welcome-button' class = 'clicked closed'> Welcome!!</button>
                     </div>
                     <div class="col-lg-3">
-                        <button id='sport-btn' type="button" class="btn btn-primary bg-white sports-btn" style='color:black; font-weight: bold;'>Sports</button>
-                        <button id='music-btn' type="button" class="btn btn-primary bg-white sports-btn" style='color:black; font-weight: bold;'>Music</button>
-                        <button id='art-btn' type="button" class="btn btn-primary bg-white sports-btn" style='color:black; font-weight: bold;'>Arts</button>
+                        <button id='sport-btn' type="button" class="btn btn-primary bg-white sports-btn" style='color:black; font-weight: bold; display:inline-block;'>Sports</button>
+                        <button id='music-btn' type="button" class="btn btn-primary bg-white sports-btn" style='color:black; font-weight: bold; display:inline-block;'>Music</button>
+                        <button id='art-btn' type="button" class="btn btn-primary bg-white sports-btn" style='color:black; font-weight: bold; display:inline-block;'>Arts</button>
+                        <!-- buttons for logged fetches  -->
+                        <button id="loggedIn-sport-btn" type="button" class="btn btn-primary bg-white sports-btn" style='color:black; font-weight: bold; display:none;'>Sports 2</button>
+                        <button id="loggedIn-music-btn" type="button" class="btn btn-primary bg-white sports-btn" style='color:black; font-weight: bold; display:none;'>Music 2</button>
+                        <button id="loggedIn-art-btn" type="button" class="btn btn-primary bg-white sports-btn" style='color:black; font-weight: bold; display:none;'>Arts 2</button>
                     </div>
                     <div class="col-lg-3">
                         <button type = 'button' id ='signin-button'> Signin/Signup</button>
@@ -97,28 +101,27 @@
                     </div>
                     <div class = "col-lg-2 comment-button-col">
                         <div id = 'instructions-div' >
-                                    <!-- <p class = 'instructions'>Click 'Welcome' to go back to the home page. </p>
+                                    <p class = 'instructions'>Click 'Welcome' to go back to the home page. </p>
                                     <p class = 'instructions'>You will be able to leave a comment and view your personal planner after signing in.</p>
-                                    <p class = 'instructions'>Thank you for visiting.</p> -->
-                                    <!-- <form id ='review-form' class="w3-container" style="display:none;">
-                                    <label class="w3-text-blue"><b>RRRRReview</b></label>
-                                    <br>
-                                            <label for="">RRRRating</label>
-                                            <select name = 'rating_dropdown' class ='rating-dropdown'>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            </select>
-                                            <textarea class="w3-input w3-border" id='user_review' type="text" rows="7" placeholder="sign in required to leave review"></textarea>
-                                            <button type = 'button' class="w3-btn w3-blue" id='close_form_btn' >Close</button>
-                                            <button class="w3-btn w3-blue">Submit</button>
-                                    </form> -->
-                                    <!-- <input type="submit"/> -->
+                                    <p class = 'instructions'>Thank you for visiting.</p>
                                                 <!-- onclick, calling the function inside the html tag -->
                         </div>
                                     <button id='review-button' style = 'display: none;' class = 'clicked closed'> Leave Review </button>
+                                    <form id ='review-form' class="w3-container" style="display:none;">
+                                        <label class="w3-text-blue"><b>Review</b></label>
+                                        <br>
+                                                <label for="">Rating</label>
+                                                <select name = 'rating_dropdown' class ='rating-dropdown'>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                </select>
+                                                <textarea class="w3-input w3-border" id='user_review' type="text" rows="7" placeholder="sign in required to leave review"></textarea>
+                                                <button class="w3-btn w3-blue">Submit</button>
+                                                <button type = 'button' class="w3-btn w3-blue" id='close_form_btn' >Close</button>
+                                        </form>
                                     <button type = 'button' class="w3-btn w3-blue" id = 'personal-planner'style='display:none;' >Personal Planner</button>
                                     <button type = 'button' id ='update-button' style="display: none"> Update Info</button>
                         
@@ -150,21 +153,6 @@
             </div>
 
      </div> <!-- main container-->
-     <form id ='review-form' class="w3-container" style="display:block;">
-        <label class="w3-text-blue"><b>RRRRReview</b></label>
-        <br>
-                <label for="">RRRRating</label>
-                <select name = 'rating_dropdown' class ='rating-dropdown'>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                </select>
-                <textarea class="w3-input w3-border" id='user_review' type="text" rows="7" placeholder="sign in required to leave review"></textarea>
-                <button type = 'button' class="w3-btn w3-blue" id='close_form_btn' >Close</button>
-                <button class="w3-btn w3-blue">Submit</button>
-        </form>
      
 </body>
 </html>
