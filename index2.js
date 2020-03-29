@@ -514,18 +514,18 @@ music_btn.addEventListener('click', e=> {
 
 // Sport page when logged in 
 
-function sportsFetch(new_user){
-console.log('jajaj')
-    // Sports page:
-sport_btn.addEventListener('click', e=> {
+// function sportsFetch(new_user){
+// console.log('jajaj')
+//     // Sports page:
+// sport_btn.addEventListener('click', e=> {
 
-console.log('sport button after logged')
-planner_header.style.display ='none'
-show_page_div.style.display ='block'
-planner_page_div.innerHTML =''
-main_div.style.display = 'none'
-// let show_page_div = document.querySelector('#show-page-div')
-show_page_div.innerHTML =''
+// console.log('sport button after logged')
+// planner_header.style.display ='none'
+// show_page_div.style.display ='block'
+// planner_page_div.innerHTML =''
+// main_div.style.display = 'none'
+// // let show_page_div = document.querySelector('#show-page-div')
+// show_page_div.innerHTML =''
 //    Brooklyn Sports fetch
 // fetch("https://app.ticketmaster.com/discovery/v2/events.json?keyword=sports&city=brooklyn&apikey=GakWWYs0kV9kTWdT89oUptSkOAUQwMz5")
 // .then(r => r.json()).then(object => {
@@ -579,16 +579,16 @@ show_page_div.innerHTML =''
 
 // Welcome button to go back to home page
 
-welcome_btn.addEventListener('click', e=>{
-        planner_header.style.display ='none'
-        planner_page_div.style.display ='none'  
-        planner_page_div.innerHTML =''
-        show_page_div.innerHTML =''
-        main_div.style.display = 'block'
+// welcome_btn.addEventListener('click', e=>{
+//         planner_header.style.display ='none'
+//         planner_page_div.style.display ='none'  
+//         planner_page_div.innerHTML =''
+//         show_page_div.innerHTML =''
+//         main_div.style.display = 'block'
         
-})
-}) 
-} // End of sportFetch()
+// })
+// }) 
+// } // End of sportFetch()
 
 
 // Music Page when logged in 
@@ -745,9 +745,10 @@ art_btn.addEventListener('click', e=> {
 
 // Show pages after 'fake' logged in, user isnt being persisted , no user Auth for this project.
 
+function sportsFetch(new_user){
 loggedIn_sport_btn.addEventListener('click', e => {
     main_div.style.display = 'none'
-
+    show_page_div.innerHTML ='' // Clear the previous show page 
     let loggedIn_sport_showpage = document.createElement('div')
         loggedIn_sport_showpage.classList.add('row')
     fetch("https://app.ticketmaster.com/discovery/v2/events.json?keyword=sports&city=brooklyn&apikey=GakWWYs0kV9kTWdT89oUptSkOAUQwMz5")
@@ -764,7 +765,9 @@ loggedIn_sport_btn.addEventListener('click', e => {
                 <img id = 'show_event_img' src = ${event.images[0].url}> 
                 <h4 id ='show_event_name'> ${event.name} </h4>
                 <h5 id ='show_event_time'>${event.dates.start.localDate}, at ${event.dates.start.localTime}</h5>
-                <button id = 'logged_in_event_buy_ticket'> Buy Ticket </button>`
+                <button id = 'event_buy_ticket'> Buy Ticket </button>
+                `
+
             // append to index.html
             // console.log(loggedIn_sport_showpage)
             // show_page_div.append(loggedIn_sport_showpage)
@@ -772,6 +775,20 @@ loggedIn_sport_btn.addEventListener('click', e => {
             show_page_div.append(loggedIn_sport_showpage)
             show_page_div.style.display='block'
         })
+            // Still inside this function scope, so even button with the same id, only the button inside this function scope will get triggered.
+            let buy_ticket = document.querySelector('#event_buy_ticket')
+            buy_ticket.addEventListener('click', e => {
+                alert('Congrats, you have bought a ticket for this event!! Check your planner. Click "Welcome" to go back to home page')
+                
+            })
     })
-})
+        // This is still inside the loggedIn-sport-button event.
+            welcome_btn.addEventListener('click', e=>{
+                planner_header.style.display ='none'
+                planner_page_div.style.display ='none'  
+                planner_page_div.innerHTML =''
+                show_page_div.innerHTML =''
+                main_div.style.display = 'block'})
+
+})} // End of sportsFetch(new_user)
 
