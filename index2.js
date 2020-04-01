@@ -747,6 +747,9 @@ art_btn.addEventListener('click', e=> {
 
 } // End of artsfetch() function 
 
+
+
+
 // Show pages after 'fake' logged in, user isnt being persisted , no user Auth for this project.
 
 function sportsFetch(new_user){
@@ -770,7 +773,6 @@ loggedIn_sport_btn.addEventListener('click', e => {
                 <h5 id ='show_event_time'>${event.dates.start.localDate}, at ${event.dates.start.localTime}</h5>
                 <button id = 'event_buy_ticket'> Buy Ticket </button>
                 `
-
             // buyTicketFunction(button,eventInfo)
             // append to index.html
             // console.log(loggedIn_sport_showpage)
@@ -781,7 +783,8 @@ loggedIn_sport_btn.addEventListener('click', e => {
             // Not document.select, this will select from the html. 
             let buy_button = loggedIn_sport_showcard.querySelector("#event_buy_ticket")
                 buy_button.addEventListener("click", e=>{
-
+                    console.log('here')
+                    alert("Congrats, event has been added to your personal planner. Click Welcome to go back to the home page.")
                     fetch("https://ticketfinderbackend.herokuapp.com/tickets", {
                         method: 'POST',
                         headers:{
@@ -809,5 +812,66 @@ loggedIn_sport_btn.addEventListener('click', e => {
                 show_page_div.innerHTML =''
                 main_div.style.display = 'block'})
 
-})} // End of sportsFetch(new_user)
+})} // End of sportsFetch(Logged In)
+
+function musicFetch(new_user){
+    loggedIn_sport_btn.addEventListener('click', e => {
+        main_div.style.display = 'none'
+        show_page_div.innerHTML ='' // Clear the previous show page 
+        let loggedIn_sport_showpage = document.createElement('div')
+            loggedIn_sport_showpage.classList.add('row')
+        fetch("https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=345&apikey=GakWWYs0kV9kTWdT89oUptSkOAUQwMz5")
+        .then(res => res.json())
+        .then(objects => {
+            objects._embedded.events.forEach(event =>{
+                // show_page_div.append('jdfjsdajfsdf')
+                // console.log(show_page_div)
+                let loggedIn_sport_showcard = document.createElement('div')
+                    loggedIn_sport_showcard.classList.add('col-lg-4')
+                    loggedIn_sport_showcard.innerHTML= `
+                    <p class = 'right'> Have Fun!!!! </p>
+                    <img id = 'show_event_img' src = ${event.images[0].url}> 
+                    <h4 id ='show_event_name'> ${event.name} </h4>
+                    <h5 id ='show_event_time'>${event.dates.start.localDate}, at ${event.dates.start.localTime}</h5>
+                    <button id = 'event_buy_ticket'> Buy Ticket </button>
+                    `
+                // buyTicketFunction(button,eventInfo)
+                // append to index.html
+                // console.log(loggedIn_sport_showpage)
+                // show_page_div.append(loggedIn_sport_showpage)
+                loggedIn_sport_showpage.append(loggedIn_sport_showcard)
+                show_page_div.append(loggedIn_sport_showpage)
+                show_page_div.style.display='block'
+                // Not document.select, this will select from the html. 
+                let buy_button = loggedIn_sport_showcard.querySelector("#event_buy_ticket")
+                    buy_button.addEventListener("click", e=>{
+                        alert("Congrats, event has been added to your personal planner. Click Welcome to go back to the home page.")
+                        fetch("https://ticketfinderbackend.herokuapp.com/tickets", {
+                            method: 'POST',
+                            headers:{
+                                'Content-Type': 'application/json',
+                                Accept: 'application/json'
+                            },
+                            body:JSON.stringify({
+                                name: event.name,
+                                time: `${event.dates.start.localDate}, at ${event.dates.start.localTime}`,
+                                image: event.images[0].url,
+                                user_id: new_user.id
+                            })
+                        })// End of fetch 
+                        .then(res => res.json())
+                        .then(console.log)
+                    })
+            })
+                // Still inside this function scope, so even button with the same id, only the button inside this function scope will get triggered.
+        })
+            // This is still inside the loggedIn-sport-button event.
+                welcome_btn.addEventListener('click', e=>{
+                    planner_header.style.display ='none'
+                    planner_page_div.style.display ='none'  
+                    planner_page_div.innerHTML =''
+                    show_page_div.innerHTML =''
+                    main_div.style.display = 'block'})
+    
+    })} // End of sportsFetch(Logged In)
 
