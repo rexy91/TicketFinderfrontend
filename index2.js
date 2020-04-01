@@ -128,14 +128,16 @@ else{
         welcome_btn.addEventListener('click', e=>{
             planner_header.style.display ='none'
             planner_page_div.innerHTML =''
-            planner_page_div.style.display ='none'
+            // planner_page_div.style.display ='none'
 
 }) 
     })// End of fetch .then 
 }
     // Personal Planner eventListener after login 
     function showPersonalPlanner(personal_planner_btn,new_user){
+            
             personal_planner_btn.addEventListener('click', e=> {
+                console.log("Hey Planner!!")
                 planner_header.innerHTML = `<h2 id='planner_h2'>Your Upcoming Events</h2>`
                 planner_header.style.display ='block'
                 // planner_page_div.innerHTML=''
@@ -327,7 +329,7 @@ sport_btn.addEventListener('click', e => {
 
             welcome_btn.addEventListener('click', e=>{
                       planner_page_div.innerHTML =''
-                    planner_page_div.style.display ='none'
+                    // planner_page_div.style.display ='none'
                     show_page_div.innerHTML =''
                     main_div.style.display = 'block'
             })
@@ -425,7 +427,7 @@ music_btn.addEventListener('click', e=> {
 
           welcome_btn.addEventListener('click', e=>{
             planner_page_div.innerHTML =''
-            planner_page_div.style.display ='none'
+            // planner_page_div.style.display ='none'
             show_page_div.innerHTML =''
             main_div.style.display = 'block'
          })
@@ -444,7 +446,7 @@ music_btn.addEventListener('click', e=> {
        welcome_btn.addEventListener('click', e=>{
         planner_page_div.innerHTML =''
         planner_header.style.display ='none'
-        planner_page_div.style.display ='none'
+        // planner_page_div.style.display ='none'
         main_div.style.display = 'block'
         login_form.style.display = 'none'
 
@@ -659,7 +661,7 @@ object._embedded.events.forEach((event,index) => {
 welcome_btn.addEventListener('click', e=>{
 
 planner_page_div.innerHTML =''
-planner_page_div.style.display ='none'
+// planner_page_div.style.display ='none'
 show_page_div.innerHTML =''
 main_div.style.display = 'block'
 })
@@ -736,7 +738,7 @@ art_btn.addEventListener('click', e=> {
           welcome_btn.addEventListener('click', e=>{
             planner_header.style.display ='none'
             planner_page_div.innerHTML =''
-            planner_page_div.style.display ='none'
+            // planner_page_div.style.display ='none'
             show_page_div.innerHTML =''
             main_div.style.display = 'block'
     })
@@ -809,9 +811,11 @@ loggedIn_sport_btn.addEventListener('click', e => {
             // Still inside this function scope, so even button with the same id, only the button inside this function scope will get triggered.
     })
         // This is still inside the loggedIn-sport-button event.
+            
             welcome_btn.addEventListener('click', e=>{
+                console.log('here')
                 planner_header.style.display ='none'
-                planner_page_div.style.display ='none'  
+                // planner_page_div.style.display ='none'  
                 planner_page_div.innerHTML =''
                 show_page_div.innerHTML =''
                 main_div.style.display = 'block'})
@@ -819,12 +823,11 @@ loggedIn_sport_btn.addEventListener('click', e => {
 })} // End of sportsFetch(Logged In)
 
 function musicFetch(new_user){
-    console.log('here')
     loggedIn_music_btn.addEventListener('click', e => {
         main_div.style.display = 'none'
         planner_header.style.display ='none'
         planner_page_div.innerHTML =''
-        planner_page_div.style.display ='none'
+        // planner_page_div.style.display ='none'
         show_page_div.innerHTML ='' // Clear the previous show page 
         let loggedIn_sport_showpage = document.createElement('div')
             loggedIn_sport_showpage.classList.add('row')
@@ -879,8 +882,9 @@ function musicFetch(new_user){
         })
             // This is still inside the loggedIn-sport-button event.
                 welcome_btn.addEventListener('click', e=>{
+                    console.log('here')
                     planner_header.style.display ='none'
-                    planner_page_div.style.display ='none'  
+                    // planner_page_div.style.display ='none'  
                     planner_page_div.innerHTML =''
                     show_page_div.innerHTML =''
                     main_div.style.display = 'block'})
