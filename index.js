@@ -183,8 +183,6 @@ function new_comment(new_user){
         e.preventDefault()
         alert("Thank you for leaving a review.")
         // resetting the inpu 
-        let review_content = document.querySelector("#user_review")
-            review_content.value = ""
         let new_comment = e.target.user_review.value
         let new_rating = e.target.rating_dropdown.value
         let user_name = new_user.username
@@ -221,6 +219,8 @@ function new_comment(new_user){
                 review_div.id = 'review-div'
 
     // Check the stars base on the rating , when i < rating , check it.
+    let review_content = document.querySelector("#user_review")
+        review_content.value = ""
     reviews_append_div.append(review_div)
     let spans = review_div.querySelectorAll('span')
 
@@ -262,11 +262,9 @@ function addReviewToDOM(review){
 function checkStars(index){
     spans.forEach((span,i) => {
         span.classList.toggle('checked', i < index )
-
     })} 
 
 checkStars(review.rating)
-
 }
 
 
