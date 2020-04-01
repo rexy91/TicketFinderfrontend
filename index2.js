@@ -138,8 +138,7 @@ else{
             personal_planner_btn.addEventListener('click', e=> {
                 planner_header.innerHTML = `<h2 id='planner_h2'>Your Upcoming Events</h2>`
                 planner_header.style.display ='block'
-                planner_page_div.innerHTML=''
-                
+                // planner_page_div.innerHTML=''
                 fetch(`https://ticketfinderbackend.herokuapp.com/users/${new_user.id}`,{
                     method:'GET',
                     headers:{
@@ -150,9 +149,9 @@ else{
                 .then(res => res.json())
                 .then(userObj => {
                     userObj.tickets.forEach(ticket => {
-                        let single_event_div = document.createElement('div')
-                        single_event_div.classList.add('show-page-col')
-                    single_event_div.classList.add('col-4')
+                    let single_event_div = document.createElement('div')
+                    single_event_div.classList.add('show-page-col')
+                    single_event_div.classList.add('col-lg-6')
                     single_event_div.style = 'border:solid 1px;'
                     // Inner html shouldn't have another div 
                     single_event_div.innerHTML = `
@@ -164,7 +163,6 @@ else{
                     })
                 })
 
-                planner_page_div.style.display ='block'
                 main_div.style.display = 'none'
                 // Fetch user's ticket page, localhost//users, since it also renders user's tickets.
                 new_user.tickets.forEach(ticket => { 
